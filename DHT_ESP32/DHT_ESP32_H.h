@@ -2,68 +2,74 @@
 MIT license
 written by Coingaming
 */
-#ifndef DHT_ESP32_H
-#define DHT_ESP32_H
+#ifndef dhtesp_h
+#define dhtesp_h
 
-// Uncomment to enable printing out nice debug messages.
-#define DHT_DEBUG
+struct TempAndHumidity {
+  float temperature;
+  float humidity;
+};
 
-// Setup debug printing macros.
-#ifdef DHT_DEBUG
-#define DEBUG_PRINT(...)              \
-  {                                   \
-    printf(__VA_ARGS__); \
-  }
-#define DEBUG_PRINTLN(...)              \
-  {                                     \
-    printf(__VA_ARGS__); \
-  }
-#else
-#define DEBUG_PRINT(...) \
-  {                      \
-  }
-#define DEBUG_PRINTLN(...) \
-  {                        \
-  }
-#endif
-
-// Define types of sensors.
-#define DHT22 22
-
-#include <stdint.h>
-
-class DHT
+class DHTesp
 {
 public:
-  DHT(uint8_t pin);
-  void begin(uint8_t usec = 55);
-  float readTemperature(bool S = false, bool force = false);
-  float readHumidity(bool force = false);
+
+  typedef enum {
+    AUTO_DETECT,
+    DHT11,
+    DHT22,
+    AM2302,  // Packaged DHT22
+    RHT03    // Equivalent to DHT22
+  }
+  DHT_MODEL_t;
+
+  typedef enum {
+    ERROR_NONE = 0,
+    ERROR_TIMEOUT,
+    ERROR_CHECKSUM
+  }
+  DHT_ERROR_t;
+
+  TempAndHumidity values;
+
+  // setup(dhtPin) is deprecated, auto detection is not working well on ESP32. Use setup(dhtPin, DHTesp::DHT11) instead!
+  void setup(uint8_t dhtPin) __attribute__((deprecated));
+  void setup(uint8_t pin, DHT_MODEL_t model=AUTO_DETECT);
+  void resetTimer();
+
+  float getTemperature();
+  float getHumidity();
+  TempAndHumidity getTempAndHumidity();
+
+  DHT_ERROR_t getStatus() { return error; };
+  const char* getStatusString();
+
+  DHT_MODEL_t getModel() { return model; }
+
+  int getMinimumSamplingPeriod() { return model == DHT11 ? 1000 : 2000; }
+
+  int8_t getNumberOfDecimalsTemperature() { return model == DHT11 ? 0 : 1; };
+  int8_t getLowerBoundTemperature() { return model == DHT11 ? 0 : -40; };
+  int8_t getUpperBoundTemperature() { return model == DHT11 ? 50 : 125; };
+
+  int8_t getNumberOfDecimalsHumidity() { return 0; };
+  int8_t getLowerBoundHumidity() { return model == DHT11 ? 20 : 0; };
+  int8_t getUpperBoundHumidity() { return model == DHT11 ? 90 : 100; };
+
+  static float toFahrenheit(float fromCelcius) { return 1.8 * fromCelcius + 32.0; };
+  static float toCelsius(float fromFahrenheit) { return (fromFahrenheit - 32.0) / 1.8; };
+protected:
+  void readSensor();
+
+  float temperature;
+  float humidity;
+
+  uint8_t pin;
 
 private:
-  uint8_t data[5];
-  uint8_t _pin, _type;
-#ifdef __AVR
-  // Use direct GPIO access on an 8-bit AVR so keep track of the port and bitmask
-  // for the digital pin connected to the DHT.  Other platforms will use digitalRead.
-  uint8_t _bit, _port;
-#endif
-  uint32_t _lastreadtime, _maxcycles;
-  bool _lastresult;
-  uint8_t pullTime; // Time (in usec) to pull up data line before reading
-
-  uint32_t expectPulse(bool level);
+  DHT_MODEL_t model;
+  DHT_ERROR_t error;
+  unsigned long lastReadTime;
 };
 
-class InterruptLock
-{
-public:
-  InterruptLock()
-  {
-  }
-  ~InterruptLock()
-  {
-  }
-};
-
-#endif
+#endif /*dhtesp_h*/
