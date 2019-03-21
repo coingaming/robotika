@@ -1,0 +1,91 @@
+{
+ "debug": {
+  "level": 2,
+  "factory_reset_gpio": -1,
+  "mbedtls_level": 1
+ },
+ "device": {
+  "id": "esp32_??????"
+ },
+ "sys": {
+  "wdt_timeout": 30,
+  "atca": {
+   "i2c_addr": 96,
+   "ecdh_slots_mask": 12
+  }
+ },
+ "conf_acl": "*",
+ "i2c": {
+  "freq": 100000,
+  "sda_gpio": 32,
+  "scl_gpio": 33
+ },
+ "i2c1": {
+  "unit_no": 1,
+  "freq": 100000,
+  "sda_gpio": 22,
+  "scl_gpio": 23
+ },
+ "http": {
+  "enable": true,
+  "listen_addr": "80",
+  "document_root": "/",
+  "upload_acl": "*"
+ },
+ "mjs": {
+  "generate_jsc": true
+ },
+ "rpc": {
+  "enable": true,
+  "max_frame_size": 4096,
+  "max_queue_length": 25,
+  "default_out_channel_idle_close_timeout": 10,
+  "uart": {
+   "baud_rate": 115200,
+   "fc_type": 2
+  }
+ },
+ "wifi": {
+  "ap": {
+   "enable": true,
+   "ssid": "Mongoose_??????",
+   "pass": "Mongoose",
+   "channel": 6,
+   "max_connections": 10,
+   "ip": "192.168.4.1",
+   "netmask": "255.255.255.0",
+   "gw": "192.168.4.1",
+   "dhcp_start": "192.168.4.2",
+   "dhcp_end": "192.168.4.100",
+   "trigger_on_gpio": -1,
+   "keep_enabled": true
+  },
+  "sta_connect_timeout": 30
+ },
+ "board": {
+  "led1": {
+   "pin": 13,
+   "active_high": true
+  },
+  "led2": {
+   "pin": -1,
+   "active_high": true
+  },
+  "led3": {
+   "pin": -1,
+   "active_high": true
+  },
+  "btn1": {
+   "pull_up": true
+  },
+  "btn2": {
+   "pin": -1
+  },
+  "btn3": {
+   "pin": -1
+  }
+ },
+ "app": {
+  "pin": 5
+ }
+}
