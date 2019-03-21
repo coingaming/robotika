@@ -44,7 +44,8 @@ filesystem:
 #
 config_schema:
  - ["app", "o", {title: "My app custom settings"}]
- - ["app.pin", "i", 5, {title: "GPIO pin a sensor is attached to"}]
+ - ["app.dhtPin", "i", 5, {title: "GPIO pin a sensor is attached to"}]
+ - ["app.mqPin", "i", 36, {title: "GPIO pin a sensor is attached to"}]
 
 libs:
   - origin: https://github.com/mongoose-os-libs/boards
@@ -57,6 +58,7 @@ libs:
   - origin: https://github.com/mongoose-os-libs/mjs
   - origin: https://github.com/mongoose-os-libs/http-server
   - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/mongoose-os-libs/mq135
   
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
