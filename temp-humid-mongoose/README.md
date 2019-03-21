@@ -1,7 +1,5 @@
-# A blank Mongoose OS app
+# Sensors read mongoose app
 
 ## Overview
 
-This is an empty app, serves as a skeleton for building Mongoose OS
-apps from scratch.
-
+app to read info from sensors, based on mongoose OS
