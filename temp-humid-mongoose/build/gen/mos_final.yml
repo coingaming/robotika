@@ -1,0 +1,955 @@
+name: temp-humid-mongoose
+type: app
+version: "1.0"
+platform: esp32
+platforms:
+- esp32
+- esp8266
+author: mongoose-os
+description: A Mongoose OS app skeleton
+sources:
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/src/main.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/build/gen/mgos_deps_init.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/adc/esp32/src/esp32_adc.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/src/mgos_i2c_master.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/src/esp32/esp32_i2c_master.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/src/mgos_atca.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_cfgs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_command.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_device.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_iface.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/basic/atca_basic.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/basic/atca_helpers.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/host/atca_host.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs_dev.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs_internal.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_fs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_fs_crypt.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_vfs_dev_partition.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/mgos_vfs_lfs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/littlefs/lfs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/littlefs/lfs_util.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/mgos_vfs_fs_spiffs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_cache.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_check.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_gc.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_hydrogen.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_nucleus.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/core/src/mgos_core.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mqtt/src/mgos_mqtt.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/shadow/src/mgos_shadow.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws_greengrass.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws_shadow.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/dht/src/mgos_dht.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/http-server/src/mgos_http_server.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/src/mos_mjs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/modules/mjs/mjs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/esp32/src/esp32_mjs.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mq135/src/mq135.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc_channel.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc_channel_http.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mgos_rpc.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-config/src/mgos_service_config.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-fs/src/mgos_service_filesystem.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-uart/src/mgos_rpc_channel_uart.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/src/mgos_wifi.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/src/mjs_wifi.c
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/esp32/src/esp32_wifi.c
+includes:
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/adc/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mbedtls/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mbedtls/include/esp32
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mbedtls/mbedtls/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/include/esp32
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mongoose/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/include/spiffs
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/include/esp32
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/core/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/core/include/esp32
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mqtt/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/shadow/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/dht/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/http-server/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-config/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-fs/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-uart/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/include
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/esp32/include
+filesystem:
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/ca-bundle/fs/ca.pem
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_bitbang.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_config.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_events.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_gpio.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_http.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_log.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_net.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_sys.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_timer.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/api_uart.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/fs/init.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/modules/mjs/mjs/lib/api_dataview.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/modules/mjs/mjs/lib/api_file.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/modules/mjs/mjs/lib/api_math.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/adc/mjs_fs/api_adc.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/mjs_fs/api_i2c.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mqtt/mjs_fs/api_mqtt.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/shadow/mjs_fs/api_shadow.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/mjs_fs/api_aws.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/dht/mjs_fs/api_dht.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mq135/mjs_fs/api_mq135.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/mjs_fs/api_rpc.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/mjs_fs/api_wifi.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/esp32/fs/api_arch_uart.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/esp32/fs/api_esp32.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mq135/mjs_fs/api_mq135.js
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/fs/init.js
+binary_libs:
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/build/objs/libmbedtls-esp32-2.12.1.a
+- /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/build/objs/libmongoose-esp32-2.12.1.a
+modules:
+- origin: https://github.com/cesanta/mjs
+  location: https://github.com/cesanta/mjs
+  name: mjs_module
+config_schema:
+- - sys.esp32_adc_vref
+  - i
+  - 0
+  - title: ADC Vref, in mV
+- - sys.esp32_adc_width
+  - i
+  - 3
+  - title: ADC width, see ESP32 IDF
+- - i2c
+  - o
+  - title: I2C settings
+- - i2c.unit_no
+  - i
+  - 0
+  - title: Which hardware unit to use, 0 or 1
+- - i2c.enable
+  - b
+  - false
+  - title: Enable I2C
+- - i2c.freq
+  - i
+  - 100000
+  - title: Clock frequency
+- - i2c.debug
+  - b
+  - false
+  - title: Debug I2C bus activity
+- - i2c.sda_gpio
+  - i
+  - 32
+  - title: GPIO to use for SDA
+- - i2c.scl_gpio
+  - i
+  - 33
+  - title: GPIO to use for SCL
+- - i2c1
+  - i2c
+  - title: I2C settings
+- - i2c1.unit_no
+  - 1
+- - i2c1.enable
+  - false
+- - i2c1.sda_gpio
+  - 22
+- - i2c1.scl_gpio
+  - 23
+- - sys.atca
+  - o
+  - title: CryptoAuthLib configuration
+- - sys.atca.enable
+  - b
+  - false
+  - title: Enable the chip
+- - sys.atca.i2c_bus
+  - i
+  - 0
+  - title: Which I2C bus to use
+- - sys.atca.i2c_addr
+  - i
+  - 96
+  - title: I2C address of the chip
+- - sys.atca.ecdh_slots_mask
+  - i
+  - 12
+  - title: Which slots can be used for ECDH (bitmask)
+- - debug.mbedtls_level
+  - i
+  - 1
+  - title: mbedTLS debug level
+- - mqtt
+  - o
+  - title: MQTT settings
+- - mqtt.enable
+  - b
+  - false
+  - title: Enable MQTT
+- - mqtt.server
+  - s
+  - iot.eclipse.org:1883
+  - title: MQTT server
+- - mqtt.client_id
+  - s
+  - ""
+  - title: ClientID t send to the broker. Defaults to device.id.
+- - mqtt.user
+  - s
+  - ""
+  - title: User name
+- - mqtt.pass
+  - s
+  - ""
+  - title: Password
+- - mqtt.reconnect_timeout_min
+  - d
+  - 2
+  - title: Starting reconnect timeout
+- - mqtt.reconnect_timeout_max
+  - d
+  - 60
+  - title: Maximum reconnect timeout
+- - mqtt.ssl_cert
+  - s
+  - ""
+  - title: Client certificate to present to the server
+- - mqtt.ssl_key
+  - s
+  - ""
+  - title: Private key corresponding to the certificate
+- - mqtt.ssl_ca_cert
+  - s
+  - ""
+  - title: Verify server certificate using this CA bundle
+- - mqtt.ssl_cipher_suites
+  - s
+  - ""
+  - title: Cipher suites to offer to the server
+- - mqtt.ssl_psk_identity
+  - s
+  - ""
+  - title: PSK identity (must specify PSK cipher suites)
+- - mqtt.ssl_psk_key
+  - s
+  - ""
+  - title: PSK key
+- - mqtt.clean_session
+  - b
+  - true
+  - title: Clean Session
+- - mqtt.keep_alive
+  - i
+  - 60
+  - title: Keep alive interval
+- - mqtt.will_topic
+  - s
+  - ""
+  - title: Will topic
+- - mqtt.will_message
+  - s
+  - ""
+  - title: Will message
+- - mqtt.max_qos
+  - i
+  - 2
+  - title: Limit QoS of outgoing messages to at most this
+- - mqtt.recv_mbuf_limit
+  - i
+  - 3072
+  - title: Limit recv buffer size
+- - mqtt.require_time
+  - b
+  - false
+  - title: Only connect if (when) wall time is set
+- - mqtt.cloud_events
+  - b
+  - true
+  - title: Trigger cloud events when connected / disconnected
+- - mqtt1
+  - mqtt
+  - title: Backup MQTT settings
+- - debug.stdout_topic
+  - s
+  - ""
+  - title: MQTT topic to publish STDOUT to
+- - debug.stderr_topic
+  - s
+  - ""
+  - title: MQTT topic to publish STDERR to
+- - shadow
+  - o
+  - title: Device shadow settings
+- - shadow.enable
+  - b
+  - true
+  - title: Enable device shadow functionality
+- - shadow.lib
+  - s
+  - ""
+  - title: Preferred shadow lib, e.g. aws, dash, gcp
+- - aws
+  - o
+  - title: AWS settings
+- - aws.thing_name
+  - s
+  - ""
+  - title: Set thing name. If not specified, device.id is used
+- - aws.greengrass
+  - o
+  - title: AWS Greengrass settings
+- - aws.greengrass.enable
+  - b
+  - false
+  - title: Enable AWS Greengrass service
+- - aws.greengrass.reconnect_timeout_min
+  - i
+  - 2
+  - title: Starting reconnect timeout
+- - aws.greengrass.reconnect_timeout_max
+  - i
+  - 60
+  - title: Maximum reconnect timeout
+- - mqtt.recv_mbuf_limit
+  - 8192
+- - http
+  - o
+  - title: HTTP Server
+- - http.enable
+  - b
+  - true
+  - title: Enable HTTP Server
+- - http.listen_addr
+  - s
+  - "80"
+  - title: Listening port / address
+- - http.document_root
+  - s
+  - /
+  - title: Root for serving files. Setting to empty disables file serving.
+- - http.ssl_cert
+  - s
+  - title: Turn on SSL on the listener, use this cert
+- - http.ssl_key
+  - s
+  - title: SSL key to use
+- - http.ssl_ca_cert
+  - s
+  - title: Verify clients this CA bundle
+- - http.upload_acl
+  - s
+  - '*'
+  - title: Upload file ACL
+- - http.hidden_files
+  - s
+  - title: Hidden file pattern
+- - http.auth_domain
+  - s
+  - title: Enable authentication of all HTTP requests
+- - http.auth_file
+  - s
+  - title: Password file to use for auth
+- - mjs
+  - o
+  - title: mJS settings
+- - mjs.generate_jsc
+  - b
+  - true
+  - title: Generate .jsc file when executing any .js file
+- - rpc
+  - o
+  - title: RPC settings
+- - rpc.enable
+  - b
+  - true
+  - title: Enable RPC
+- - rpc.max_frame_size
+  - i
+  - 4096
+  - title: Max Frame Size
+- - rpc.max_queue_length
+  - i
+  - 25
+  - title: Max Queue Length
+- - rpc.default_out_channel_idle_close_timeout
+  - i
+  - 10
+  - title: Default idle close timeout for outbound channels
+- - rpc.acl_file
+  - s
+  - title: File with RPC ACL JSON
+- - rpc.auth_domain
+  - s
+  - title: Realm to use for digest authentication
+- - rpc.auth_file
+  - s
+  - title: File with user credentials in the htdigest format
+- - rpc.uart
+  - o
+  - title: RPC-over-UART settings
+- - rpc.uart.uart_no
+  - i
+  - 0
+  - title: UART number (-1 to disable)
+- - rpc.uart.baud_rate
+  - i
+  - 115200
+  - title: Baud rate
+- - rpc.uart.fc_type
+  - i
+  - 2
+  - title: 'Flow control: 0 - none, 1 - CTS/RTS, 2 - XON/XOFF'
+- - rpc.uart.dst
+  - s
+  - ""
+  - title: Destination reachable via this channel
+- - wifi
+  - o
+  - hide: true
+- - wifi.ap
+  - o
+  - title: WiFi Access Point Config
+- - wifi.ap.enable
+  - b
+  - true
+  - title: Enable
+- - wifi.ap.ssid
+  - s
+  - Mongoose_??????
+  - title: SSID
+- - wifi.ap.pass
+  - s
+  - Mongoose
+  - title: Password
+    type: password
+- - wifi.ap.hidden
+  - b
+  - false
+  - title: Hide SSID
+- - wifi.ap.channel
+  - i
+  - 6
+  - title: Channel
+- - wifi.ap.max_connections
+  - i
+  - 10
+  - title: Max connections
+- - wifi.ap.ip
+  - s
+  - 192.168.4.1
+  - title: IP address
+- - wifi.ap.netmask
+  - s
+  - 255.255.255.0
+  - title: Network Mask
+- - wifi.ap.gw
+  - s
+  - 192.168.4.1
+  - title: Default Gateway
+- - wifi.ap.dhcp_start
+  - s
+  - 192.168.4.2
+  - title: DHCP Start Address
+- - wifi.ap.dhcp_end
+  - s
+  - 192.168.4.100
+  - title: DHCP End Address
+- - wifi.ap.trigger_on_gpio
+  - i
+  - -1
+  - title: Trigger AP on low GPIO
+- - wifi.ap.disable_after
+  - i
+  - 0
+  - title: If > 0, will disable itself after the specified number of seconds
+- - wifi.ap.hostname
+  - s
+  - ""
+  - title: If not empty, DNS server will resolve given host name to the IP address
+      of AP
+- - wifi.sta
+  - o
+  - title: WiFi Station Config
+- - wifi.sta.enable
+  - b
+  - title: Connect to existing WiFi
+- - wifi.sta.ssid
+  - s
+  - title: SSID
+- - wifi.sta.pass
+  - s
+  - title: Password
+    type: password
+- - wifi.sta.user
+  - s
+  - title: Username for WPA-PEAP mode
+- - wifi.sta.anon_identity
+  - s
+  - title: Anonymous identity for WPA mode
+- - wifi.sta.cert
+  - s
+  - title: Client certificate for WPA-TTLS mode
+- - wifi.sta.key
+  - s
+  - title: Client key for WPA-TTLS mode
+- - wifi.sta.ca_cert
+  - s
+  - title: CA certificate for WPA-enterprise mode
+- - wifi.sta.ip
+  - s
+  - title: Static IP Address
+- - wifi.sta.netmask
+  - s
+  - title: Static Netmask
+- - wifi.sta.gw
+  - s
+  - title: Static Default Gateway
+- - wifi.sta.nameserver
+  - s
+  - title: DNS Server
+- - wifi.sta.dhcp_hostname
+  - s
+  - title: Host name to include in DHCP requests
+- - wifi.sta1
+  - wifi.sta
+  - title: WiFi Station Config 1
+- - wifi.sta1.enable
+  - false
+- - wifi.sta2
+  - wifi.sta
+  - title: WiFi Station Config 2
+- - wifi.sta2.enable
+  - false
+- - wifi.sta_cfg_idx
+  - i
+  - 0
+  - title: WiFi station config index to use, 0, 1 or 2
+- - wifi.sta_connect_timeout
+  - i
+  - 30
+  - title: Timeout for connection, seconds
+- - wifi.ap.keep_enabled
+  - b
+  - true
+  - title: Keep AP enabled when station is on
+- - board
+  - o
+  - title: Board layout configuration
+- - board.led1.pin
+  - i
+  - -1
+  - title: LED GPIO pin
+- - board.led1.active_high
+  - b
+  - true
+  - title: True if LED is on when output is high (1)
+- - board.led2.pin
+  - i
+  - -1
+  - title: LED GPIO pin
+- - board.led2.active_high
+  - b
+  - true
+  - title: True if LED is on when output is high (1)
+- - board.led3.pin
+  - i
+  - -1
+  - title: LED GPIO pin
+- - board.led3.active_high
+  - b
+  - true
+  - title: True if LED is on when output is high (1)
+- - board.btn1.pin
+  - i
+  - -1
+  - title: Button GPIO pin
+- - board.btn1.pull_up
+  - b
+  - false
+  - title: True if button is pulled up when inactive
+- - board.btn2.pin
+  - i
+  - -1
+  - title: Button GPIO pin
+- - board.btn2.pull_up
+  - b
+  - false
+  - title: True if button is pulled up when inactive
+- - board.btn3.pin
+  - i
+  - -1
+  - title: Button GPIO pin
+- - board.btn3.pull_up
+  - b
+  - false
+  - title: True if button is pulled up when inactive
+- - board.led1.pin
+  - 13
+- - board.btn1.pin
+  - 0
+- - board.btn1.pull_up
+  - true
+- - provision.btn.pin
+  - 0
+- - provision.btn.pull_up
+  - true
+- - app
+  - o
+  - title: My app custom settings
+- - app.dhtPin
+  - i
+  - 5
+  - title: GPIO pin a sensor is attached to
+- - app.mqPin
+  - i
+  - 36
+  - title: GPIO pin a sensor is attached to
+build_vars:
+  BOARD: ""
+  ESP_IDF_EXTRA_COMPONENTS: ""
+  ESP_IDF_SDKCONFIG_OPTS: |2
+     CONFIG_SUPPORT_STATIC_ALLOCATION=y
+  MGOS_HAVE_ADC: "1"
+  MGOS_HAVE_ATCA: "1"
+  MGOS_HAVE_AWS: "1"
+  MGOS_HAVE_CA_BUNDLE: "1"
+  MGOS_HAVE_CORE: "1"
+  MGOS_HAVE_DHT: "1"
+  MGOS_HAVE_HTTP_SERVER: "1"
+  MGOS_HAVE_I2C: "1"
+  MGOS_HAVE_MBEDTLS: "1"
+  MGOS_HAVE_MJS: "1"
+  MGOS_HAVE_MONGOOSE: "1"
+  MGOS_HAVE_MQ135: "1"
+  MGOS_HAVE_MQTT: "1"
+  MGOS_HAVE_RPC_COMMON: "1"
+  MGOS_HAVE_RPC_SERVICE_CONFIG: "1"
+  MGOS_HAVE_RPC_SERVICE_FS: "1"
+  MGOS_HAVE_RPC_UART: "1"
+  MGOS_HAVE_SHADOW: "1"
+  MGOS_HAVE_VFS_COMMON: "1"
+  MGOS_HAVE_VFS_FS_LFS: "1"
+  MGOS_HAVE_VFS_FS_SPIFFS: "1"
+  MGOS_HAVE_WIFI: "1"
+  MGOS_HAVE_ZZ_BOARDS: "1"
+  MGOS_WIFI_ENABLE_AP_STA: "1"
+cdefs:
+  LFS_NO_DEBUG: "1"
+  MBEDTLS_ECP_ATCA: "1"
+  MBEDTLS_USER_CONFIG_FILE: \"mbedtls_platform_config.h\"
+  MBEDTLS_X509_CA_CHAIN_ON_DISK: "1"
+  MG_ENABLE_DNS: "1"
+  MG_ENABLE_DNS_SERVER: "1"
+  MG_ENABLE_MQTT: "1"
+  MG_ENABLE_SNTP: "1"
+  MG_ENABLE_SSL: "1"
+  MG_SSL_IF: MG_SSL_IF_MBEDTLS
+  MG_SSL_IF_MBEDTLS_FREE_CERTS: "1"
+  MGOS_ENABLE_FILE_UPLOAD: "1"
+  MGOS_ENABLE_RPC_CHANNEL_HTTP: "1"
+  MGOS_ENABLE_SYS_SERVICE: "1"
+  MGOS_ENABLE_WEB_CONFIG: "0"
+  MGOS_HAVE_ADC: "1"
+  MGOS_HAVE_ATCA: "1"
+  MGOS_HAVE_AWS: "1"
+  MGOS_HAVE_CA_BUNDLE: "1"
+  MGOS_HAVE_CORE: "1"
+  MGOS_HAVE_DHT: "1"
+  MGOS_HAVE_HTTP_SERVER: "1"
+  MGOS_HAVE_I2C: "1"
+  MGOS_HAVE_MBEDTLS: "1"
+  MGOS_HAVE_MJS: "1"
+  MGOS_HAVE_MONGOOSE: "1"
+  MGOS_HAVE_MQ135: "1"
+  MGOS_HAVE_MQTT: "1"
+  MGOS_HAVE_RPC_COMMON: "1"
+  MGOS_HAVE_RPC_SERVICE_CONFIG: "1"
+  MGOS_HAVE_RPC_SERVICE_FS: "1"
+  MGOS_HAVE_RPC_UART: "1"
+  MGOS_HAVE_SHADOW: "1"
+  MGOS_HAVE_VFS_COMMON: "1"
+  MGOS_HAVE_VFS_FS_LFS: "1"
+  MGOS_HAVE_VFS_FS_SPIFFS: "1"
+  MGOS_HAVE_WIFI: "1"
+  MGOS_HAVE_ZZ_BOARDS: "1"
+  MGOS_WIFI_ENABLE_AP_STA: "1"
+tags:
+- c
+libs_version: 2.12.1
+modules_version: 2.12.1
+mongoose_os_version: 2.12.1
+manifest_version: "2017-09-29"
+libs_handled:
+- lib:
+    origin: https://github.com/mongoose-os-libs/adc
+    location: https://github.com/mongoose-os-libs/adc
+    name: adc
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/adc
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/adc/esp32/src/esp32_adc.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/i2c
+    location: https://github.com/mongoose-os-libs/i2c
+    name: i2c
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/src/mgos_i2c_master.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/i2c/src/esp32/esp32_i2c_master.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/atca
+    location: https://github.com/mongoose-os-libs/atca
+    name: atca
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca
+  init_deps:
+  - i2c
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/src/mgos_atca.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_cfgs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_command.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_device.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/atca_iface.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/basic/atca_basic.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/basic/atca_helpers.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/atca/cryptoauthlib/lib/host/atca_host.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/mbedtls
+    location: https://github.com/mongoose-os-libs/mbedtls
+    name: mbedtls
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mbedtls
+- lib:
+    origin: https://github.com/mongoose-os-libs/vfs-common
+    location: https://github.com/mongoose-os-libs/vfs-common
+    name: vfs-common
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs_dev.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/mgos_vfs_internal.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_fs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_fs_crypt.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-common/src/esp32/esp32_vfs_dev_partition.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/mongoose
+    location: https://github.com/mongoose-os-libs/mongoose
+    name: mongoose
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mongoose
+- lib:
+    origin: https://github.com/mongoose-os-libs/vfs-fs-lfs
+    location: https://github.com/mongoose-os-libs/vfs-fs-lfs
+    name: vfs-fs-lfs
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs
+  init_deps:
+  - vfs-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/mgos_vfs_lfs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/littlefs/lfs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-lfs/src/littlefs/lfs_util.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/vfs-fs-spiffs
+    location: https://github.com/mongoose-os-libs/vfs-fs-spiffs
+    name: vfs-fs-spiffs
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs
+  init_deps:
+  - vfs-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/mgos_vfs_fs_spiffs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_cache.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_check.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_gc.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_hydrogen.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/vfs-fs-spiffs/src/spiffs/spiffs_nucleus.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/core
+    location: https://github.com/mongoose-os-libs/core
+    name: core
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/core
+  init_deps:
+  - mongoose
+  - vfs-common
+  - vfs-fs-lfs
+  - vfs-fs-spiffs
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/core/src/mgos_core.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/ca-bundle
+    location: https://github.com/mongoose-os-libs/ca-bundle
+    name: ca-bundle
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/ca-bundle
+  init_deps:
+  - core
+- lib:
+    origin: https://github.com/mongoose-os-libs/mqtt
+    location: https://github.com/mongoose-os-libs/mqtt
+    name: mqtt
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mqtt
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mqtt/src/mgos_mqtt.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/shadow
+    location: https://github.com/mongoose-os-libs/shadow
+    name: shadow
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/shadow
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/shadow/src/mgos_shadow.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/aws
+    location: https://github.com/mongoose-os-libs/aws
+    name: aws
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws
+  init_deps:
+  - ca-bundle
+  - core
+  - mqtt
+  - shadow
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws_greengrass.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/aws/src/mgos_aws_shadow.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/dht
+    location: https://github.com/mongoose-os-libs/dht
+    name: dht
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/dht
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/dht/src/mgos_dht.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/http-server
+    location: https://github.com/mongoose-os-libs/http-server
+    name: http-server
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/http-server
+  init_deps:
+  - atca
+  - core
+  - wifi
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/http-server/src/mgos_http_server.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/mjs
+    location: https://github.com/mongoose-os-libs/mjs
+    name: mjs
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/src/mos_mjs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/modules/mjs/mjs.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mjs/esp32/src/esp32_mjs.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/mq135
+    location: https://github.com/mongoose-os-libs/mq135
+    name: mq135
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mq135
+  init_deps:
+  - adc
+  - core
+  - mjs
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/mq135/src/mq135.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/rpc-common
+    location: https://github.com/mongoose-os-libs/rpc-common
+    name: rpc-common
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common
+  init_deps:
+  - core
+  - http-server
+  - mongoose
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc_channel.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mg_rpc_channel_http.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-common/src/mgos_rpc.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/rpc-service-config
+    location: https://github.com/mongoose-os-libs/rpc-service-config
+    name: rpc-service-config
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-config
+  init_deps:
+  - core
+  - rpc-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-config/src/mgos_service_config.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/rpc-service-fs
+    location: https://github.com/mongoose-os-libs/rpc-service-fs
+    name: rpc-service-fs
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-fs
+  init_deps:
+  - core
+  - rpc-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-service-fs/src/mgos_service_filesystem.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/rpc-uart
+    location: https://github.com/mongoose-os-libs/rpc-uart
+    name: rpc-uart
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-uart
+  init_deps:
+  - core
+  - rpc-common
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/rpc-uart/src/mgos_rpc_channel_uart.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/wifi
+    location: https://github.com/mongoose-os-libs/wifi
+    name: wifi
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi
+  init_deps:
+  - core
+  sources:
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/src/mgos_wifi.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/src/mjs_wifi.c
+  - /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/wifi/esp32/src/esp32_wifi.c
+- lib:
+    origin: https://github.com/mongoose-os-libs/boards
+    location: https://github.com/mongoose-os-libs/boards
+    name: zz_boards
+  path: /data/fwbuild-volumes/2.12.1/apps/temp-humid-mongoose/esp32/build_contexts/build_ctx_928141448/deps/boards
+init_deps:
+- mongoose
+- vfs-common
+- vfs-fs-lfs
+- vfs-fs-spiffs
+- core
+- adc
+- i2c
+- atca
+- ca-bundle
+- mqtt
+- shadow
+- aws
+- dht
+- wifi
+- http-server
+- mbedtls
+- mjs
+- mq135
+- rpc-common
+- rpc-service-config
+- rpc-service-fs
+- rpc-uart
+- zz_boards

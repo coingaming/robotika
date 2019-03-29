@@ -33,3 +33,5 @@
 *.zip
 .vscode
 /build/*
+
+*.pem
