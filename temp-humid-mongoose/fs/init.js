@@ -3,6 +3,7 @@ load('api_rpc.js');
 load('api_dht.js');
 load('api_timer.js');
 load('api_mq135.js');
+load('api_mqtt.js');
 
 let dhtPin = Cfg.get('app.dhtPin');
 let mqPin = Cfg.get('app.mqPin');
@@ -33,6 +34,12 @@ Timer.set(10000, true, function() {
   print('MQ135 RZero: ',rzero,' Corrected RZero: ',correctedRZero,'\n');
   print('Resistance: ',resistance," kohm\n");
   print('PPM: ',ppm,' Corrected PPM: ',correctedPPM,' ppm\n');
+
+  let message = JSON.stringify({temp: temperature});
+  // let ok = MQTT.pub("sensors/temperature", JSON.stringify({temp: temperature}), message.length);
+  // print('Published: ', ok ? 'yes' : 'no', "topic: sensors/temperature", "message: ", message);
+  // MQTT.pub("sensors", "humidity", humidity);
+  // MQTT.pub("sensors", "PPM", correctedPPM);
 }, null);
 
 RPC.addHandler('TempHumid.Read', function(args) {
